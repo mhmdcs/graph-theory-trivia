@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.graphtheorytrivia.databinding.FragmentTitleBinding
 
 class TitleFragment : Fragment() {
@@ -18,6 +19,15 @@ class TitleFragment : Fragment() {
         // Inflate the layout for this fragment
         //false prevents the layout from being attached to the ViewGroup
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_title, container,false)
+
+
+        //Navigation Controller is a class that is used to manage navigation within the NavigationHostFragment
+        //you will need safe-args dependencies in gradle project and apply them in gradle app to use NavDirections
+        //if you don't have NavDirections, just use the good old resource action ids from navigation.xml
+        binding.beginButton.setOnClickListener(){ view: View ->
+                view.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment())
+        }
+
         return binding.root
     }
 }

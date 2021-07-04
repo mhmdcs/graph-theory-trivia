@@ -14,7 +14,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
 
-        //navigation safe-args dependency
+        //navigation safe-args dependency (this is essential for the navdirection navigation direction), don't forget the apply plugin statement in the other gradle app file
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:${nav_version}"
 
         // NOTE: Do not place your application dependencies here; they belong

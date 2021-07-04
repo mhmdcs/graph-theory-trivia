@@ -1,5 +1,13 @@
+
+<!-- %d is a signed integer type-specifier, $ is a kotlin metacharacter for inserting, %1$d or %2$d are to display data -->
 <resources>
     <string name="app_name">Graph Theory Trivia</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="submit_button">Submit</string>
+    <string name="try_again">TRY AGAIN?</string>
+    <string name="another_round">ANOTHER ROUND?</string>
+    <string name="graph_theory_title">Graph Theory Trivia (%1$d/%2$d)</string>
+    <string name="graph_theory_trivia">Graph Theory Trivia</string>
+    <string name="begin_button">BEGIN</string>
 </resources>

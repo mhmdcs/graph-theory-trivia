@@ -8,11 +8,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--create a NavHostFragment this way-->
+    <!--make the NavHostFragment point to the navigation graph resource that was created named "navigation"-->
+    <!--defaultNavHost set to true means that this navigation host will intercept the system back key-->
     <fragment
-        android:id="@+id/titleFragment"
-        android:name="com.example.graphtheorytrivia.TitleFragment"
+        android:id="@+id/myNavHostFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:navGraph="@navigation/navigation"
+        app:defaultNavHost="true"
         />
 
 </LinearLayout>
