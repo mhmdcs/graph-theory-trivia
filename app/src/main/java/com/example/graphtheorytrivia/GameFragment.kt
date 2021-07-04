@@ -14,20 +14,24 @@ class GameFragment : Fragment() {
 
     //set of questions and answers
     private val questions2: Question = Question()
-    private val questions: MutableList<Question> = mutableListOf(
-        Question(questionText = "What is my name", answerText = listOf("Mohammed","Saleh","Ahmed", "Omar")),
-        Question("What Is my age", listOf("24","23","22","21")) ,
-        Question("What is my major", listOf("CS","IS","IT","NS")),
-        Question("What is my gender", listOf("Male","Female","Not Sure","All"))
+    data class QuestionData(
+        val questionText: String = "",
+        val answerText: List<String>
+    )
+    private val questions: MutableList<QuestionData> = mutableListOf(
+        QuestionData(questionText = "What is my name", answerText = listOf("Mohammed","Saleh","Ahmed", "Omar")),
+        QuestionData(questionText = "What Is my age", answerText = listOf("24","23","22","21")) ,
+        QuestionData(questionText = "What is my major", answerText = listOf("CS","IS","IT","NS")),
+        QuestionData(questionText = "What is my gender", answerText = listOf("Male","Female","Not Sure","All"))
     )
 
 
-    private lateinit var binding: FragmentGameBinding
-    private lateinit var currentQuestion: Question;
-    private lateinit var answers: MutableList<String>;
-    private var questionIndex = 0;
-    var answerIndex = 0;
-    private val numOfQuestions = 3;
+     lateinit var binding: FragmentGameBinding
+     lateinit var currentQuestion: QuestionData;
+     lateinit var answers: MutableList<String>;
+     var questionIndex = 0;
+     var answerIndex = 0;
+     val numOfQuestions = 3;
 
 
     override fun onCreateView(

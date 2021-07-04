@@ -29,7 +29,8 @@
                 android:layout_marginTop="96dp"
                 android:layout_marginEnd="@dimen/question_horizontal_margin"
                 android:fontFamily="sans-serif"
-                android:text="What is this Trivia app about?"
+                android:text="@{game.currentQuestion.questionText}"
+                tools:text="What is this Trivia app about?"
                 android:textAlignment="center"
                 android:textSize="@dimen/question_text_size"
                 android:textStyle="bold"
@@ -57,7 +58,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/question_vertical_margin"
                     android:checked="true"
-                    android:text="Graph Theory"
+                    android:text="@{game.answers[0]}"
+                    tools:text="Graph Theory"
                     android:textSize="@dimen/answer_text_size" />
 
                 <RadioButton
@@ -65,7 +67,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/question_vertical_margin"
-                    android:text="Algebra"
+                    android:text="@{game.answers[1]}"
+                    tools:text="Algebra"
                     android:textSize="@dimen/answer_text_size" />
 
                 <RadioButton
@@ -73,14 +76,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/question_vertical_margin"
-                    android:text="Digital Logic"
+                    android:text="@{game.answers[2]}"
+                    tools:text="Digital Logic"
                     android:textSize="@dimen/answer_text_size" />
 
                 <RadioButton
                     android:id="@+id/fourthAnswerRadioButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Data Structures"
+                    android:text="@{game.answers[3]}"
+                    tools:text="Data Structures"
                     android:textSize="@dimen/answer_text_size" />
             </RadioGroup>
 
