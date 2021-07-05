@@ -26,12 +26,12 @@ class GameFragment : Fragment() {
     )
 
 
-     lateinit var binding: FragmentGameBinding
-     lateinit var currentQuestion: QuestionData;
-     lateinit var answers: MutableList<String>;
-     var questionIndex = 0;
-     var answerIndex = 0;
-     val numOfQuestions = 3;
+    lateinit var binding: FragmentGameBinding
+    lateinit var currentQuestion: QuestionData;
+    lateinit var answers: MutableList<String>;
+    var questionIndex = 0;
+    var answerIndex = 0;
+    val numOfQuestions = 3;
 
 
     override fun onCreateView(
@@ -102,12 +102,12 @@ class GameFragment : Fragment() {
                     view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment())
                 }
             }
-                else{
-                    //user lost, navigate to the GameOverFragment
-                    view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment())
-                }
+            else{
+                //user lost, navigate to the GameOverFragment
+                view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment())
+            }
 
-            }//if(checkId !=-1) boundaries
-        }//gamelogic fun boundaries
+        }//if(checkId !=-1) boundaries
+    }//gamelogic fun boundaries
 
-    }//class GameFragment boundaries
+}//class GameFragment boundaries
