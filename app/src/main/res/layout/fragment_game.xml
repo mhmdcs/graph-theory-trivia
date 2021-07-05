@@ -7,7 +7,7 @@
     <data>
         <variable
             name="game"
-            type="com.example.graphtheorytrivia.GameFragment" />
+            type="com.example.graphtheorytrivia.QuestionClass" />
     </data>
 
     <ScrollView

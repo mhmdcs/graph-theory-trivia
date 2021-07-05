@@ -13,21 +13,8 @@ import com.example.graphtheorytrivia.databinding.FragmentGameBinding
 class GameFragment : Fragment() {
 
 
-    //set of questions and answers
-    data class QuestionData(
-        val questionText: String = "",
-        val answerText: List<String>
-    )
-    private val questions: MutableList<QuestionData> = mutableListOf(
-        QuestionData(questionText = "What is my name", answerText = listOf("Mohammed","Saleh","Ahmed", "Omar")),
-        QuestionData(questionText = "What Is my age", answerText = listOf("24","23","22","21")) ,
-        QuestionData(questionText = "What is my major", answerText = listOf("CS","IS","IT","NS")),
-        QuestionData(questionText = "What is my gender", answerText = listOf("Male","Female","Not Sure","All"))
-    )
-
-
     lateinit var binding: FragmentGameBinding
-    lateinit var currentQuestion: QuestionData;
+    lateinit var currentQuestion: QuestionClass;
     lateinit var answers: MutableList<String>;
     var questionIndex = 0;
     var answerIndex = 0;
@@ -42,11 +29,10 @@ class GameFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_game, container, false)
 
-
         randomizeQuestions()
 
         //binds data game in layout to data question object in kotlin with a constructor (empty values)
-        binding.game = this
+        binding.game = questions3
 
         binding.submitButton.setOnClickListener(){
             gameLogic(it)
@@ -70,8 +56,8 @@ class GameFragment : Fragment() {
 
     // randomize the questions and sets the questions
     private fun randomizeQuestions(){
-        questions.shuffle()
-        currentQuestion = questions[questionIndex]
+        questions2.shuffle()
+        currentQuestion = questions2[questionIndex]
         randomizeAnswers()
     }//randomizeQuestions fun boundaries
 
@@ -94,7 +80,7 @@ class GameFragment : Fragment() {
                 //advance to the next question
                 questionIndex++
                 if (questionIndex < numOfQuestions) {
-                    currentQuestion = questions[questionIndex]
+                    currentQuestion = questions2[questionIndex]
                     randomizeQuestions()
                     binding.invalidateAll() //try commenting out this line?
                 } else {
