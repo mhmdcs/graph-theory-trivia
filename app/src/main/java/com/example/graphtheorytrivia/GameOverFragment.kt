@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import com.example.graphtheorytrivia.databinding.FragmentGameOverBinding
 
 class GameOverFragment : Fragment() {
     override fun onCreateView(
@@ -12,7 +15,13 @@ class GameOverFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game_over, container, false)
+        val binding: FragmentGameOverBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_game_over, container, false)
+
+       binding.tryAgainButton.setOnClickListener{
+           it.findNavController().navigate(GameOverFragmentDirections.actionGameOverFragmentToGameFragment())
+       }
+
+        return binding.root
     }
 
 }

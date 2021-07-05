@@ -21,36 +21,48 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/gtImage"
+                android:src="@drawable/gtimage"
+                android:layout_width="0dp"
+                android:layout_height="213dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0"
+                />
+
             <TextView
                 android:id="@+id/questionText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/question_horizontal_margin"
-                android:layout_marginTop="96dp"
                 android:layout_marginEnd="@dimen/question_horizontal_margin"
                 android:fontFamily="sans-serif"
                 android:text="@{game.currentQuestion.questionText}"
-                tools:text="What is this Trivia app about?"
                 android:textAlignment="center"
                 android:textSize="@dimen/question_text_size"
                 android:textStyle="bold"
                 android:typeface="normal"
+                app:layout_constraintBottom_toTopOf="@+id/questionRadioGroup"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/gtImage"
+                tools:text="What is this Trivia app about?" />
 
             <RadioGroup
                 android:id="@+id/questionRadioGroup"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/question_horizontal_margin"
-                android:layout_marginTop="@dimen/vertical_margin"
                 android:layout_marginEnd="@dimen/question_horizontal_margin"
                 android:animateLayoutChanges="true"
                 android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/submitButton"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/questionText">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <RadioButton
                     android:id="@+id/firstAnswerRadioButton"
@@ -59,8 +71,8 @@
                     android:layout_marginBottom="@dimen/question_vertical_margin"
                     android:checked="true"
                     android:text="@{game.answers[0]}"
-                    tools:text="Graph Theory"
-                    android:textSize="@dimen/answer_text_size" />
+                    android:textSize="@dimen/answer_text_size"
+                    tools:text="Graph Theory" />
 
                 <RadioButton
                     android:id="@+id/secondAnswerRadioButton"
@@ -68,8 +80,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/question_vertical_margin"
                     android:text="@{game.answers[1]}"
-                    tools:text="Algebra"
-                    android:textSize="@dimen/answer_text_size" />
+                    android:textSize="@dimen/answer_text_size"
+                    tools:text="Algebra" />
 
                 <RadioButton
                     android:id="@+id/thirdAnswerRadioButton"
@@ -77,23 +89,23 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/question_vertical_margin"
                     android:text="@{game.answers[2]}"
-                    tools:text="Digital Logic"
-                    android:textSize="@dimen/answer_text_size" />
+                    android:textSize="@dimen/answer_text_size"
+                    tools:text="Digital Logic" />
 
                 <RadioButton
                     android:id="@+id/fourthAnswerRadioButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{game.answers[3]}"
-                    tools:text="Data Structures"
-                    android:textSize="@dimen/answer_text_size" />
+                    android:textSize="@dimen/answer_text_size"
+                    tools:text="Data Structures" />
             </RadioGroup>
 
             <Button
                 android:id="@+id/submitButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="128dp"
+                android:layout_marginBottom="110dp"
                 android:text="@string/submit_button"
                 android:textSize="@dimen/button_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"

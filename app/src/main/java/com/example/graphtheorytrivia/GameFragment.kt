@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.graphtheorytrivia.databinding.FragmentGameBinding
 
 class GameFragment : Fragment() {
 
 
     //set of questions and answers
-    private val questions2: Question = Question()
     data class QuestionData(
         val questionText: String = "",
         val answerText: List<String>
@@ -49,7 +49,7 @@ class GameFragment : Fragment() {
         binding.game = this
 
         binding.submitButton.setOnClickListener(){
-            gameLogic()
+            gameLogic(it)
         }
 
         return binding.root
@@ -71,14 +71,13 @@ class GameFragment : Fragment() {
     // randomize the questions and sets the questions
     private fun randomizeQuestions(){
         questions.shuffle()
-        questionIndex = 0
         currentQuestion = questions[questionIndex]
         randomizeAnswers()
     }//randomizeQuestions fun boundaries
 
 
 
-    private fun gameLogic(){
+    private fun gameLogic(view: View){
 
         val checkId = binding.questionRadioGroup.checkedRadioButtonId
         //do nothing if nothing is checked (nothing is checked =-1, but in android the first radio button is always auto checked..)
@@ -100,10 +99,12 @@ class GameFragment : Fragment() {
                     binding.invalidateAll() //try commenting out this line?
                 } else {
                     //user won, navigate to the GameWonFragment
+                    view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment())
                 }
             }
                 else{
                     //user lost, navigate to the GameOverFragment
+                    view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment())
                 }
 
             }//if(checkId !=-1) boundaries
