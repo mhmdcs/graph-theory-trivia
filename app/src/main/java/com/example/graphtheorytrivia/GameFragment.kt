@@ -13,8 +13,29 @@ import com.example.graphtheorytrivia.databinding.FragmentGameBinding
 class GameFragment : Fragment() {
 
 
+    //mock data
+    var questionClassData: MutableList<QuestionClass> = mutableListOf(
+        QuestionClass(
+            questionText = "What is my name",
+            answerText = listOf("Mohammed", "Saleh", "Ahmed", "Omar")
+        ),
+        QuestionClass(
+            questionText = "What Is my age",
+            answerText = listOf("24", "23", "22", "21")
+        ),
+        QuestionClass(
+            questionText = "What is my major",
+            answerText = listOf("CS", "IS", "IT", "NS")
+        ),
+        QuestionClass(
+            questionText = "What is my gender",
+            answerText = listOf("Male", "Female", "Not Sure", "All")
+        )
+    )
+
+
     lateinit var binding: FragmentGameBinding
-    lateinit var currentQuestion: QuestionClass;
+    lateinit var currentQuestion: QuestionClass
     lateinit var answers: MutableList<String>;
     var questionIndex = 0;
     var answerIndex = 0;
@@ -32,7 +53,7 @@ class GameFragment : Fragment() {
         randomizeQuestions()
 
         //binds data game in layout to data question object in kotlin with a constructor (empty values)
-        binding.game = questions3
+        binding.game = this
 
         binding.submitButton.setOnClickListener(){
             gameLogic(it)
@@ -44,7 +65,17 @@ class GameFragment : Fragment() {
     //this only changes the data, not the UI
     //calling invalidateAll in the gameLogic method then updates the data
 
-    private fun randomizeAnswers(){
+    // randomize the questions
+    private fun randomizeQuestions(){
+        questionClassData.shuffle()
+        questionIndex = 0
+        setQuestionsAndRandomizeAnswers()
+    }//randomizeQuestions fun boundaries
+
+    //sets the questions
+    private fun setQuestionsAndRandomizeAnswers(){
+        currentQuestion = questionClassData[questionIndex]
+
         //randomizes answers into a copy of the array
         answers = currentQuestion.answerText.toMutableList()
         //shuffles the answers
@@ -52,15 +83,8 @@ class GameFragment : Fragment() {
 
         //this puts  the number of questions and how many are answered at the top of the action bar
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.graph_theory_title,questionIndex+1,numOfQuestions)
-    }//randomizeAnswers fun boundaries
 
-    // randomize the questions and sets the questions
-    private fun randomizeQuestions(){
-        questions2.shuffle()
-        currentQuestion = questions2[questionIndex]
-        randomizeAnswers()
-    }//randomizeQuestions fun boundaries
-
+    }
 
 
     private fun gameLogic(view: View){
@@ -80,9 +104,9 @@ class GameFragment : Fragment() {
                 //advance to the next question
                 questionIndex++
                 if (questionIndex < numOfQuestions) {
-                    currentQuestion = questions2[questionIndex]
-                    randomizeQuestions()
-                    binding.invalidateAll() //try commenting out this line?
+                    currentQuestion = questionClassData[questionIndex]
+                    setQuestionsAndRandomizeAnswers()
+                   binding.invalidateAll() //try commenting out this line?
                 } else {
                     //user won, navigate to the GameWonFragment
                     view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment())
